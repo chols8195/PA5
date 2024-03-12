@@ -6,7 +6,8 @@
 *Created: March 11, 2024
 *Summary of Modifications:
 *   11 March 2024 - created the useArray file
-*   11 March 2024 - created the functions for howMany(), fillArray(), printArray(), dupeCheck(), and sortArray
+*   11 March 2024 - created the functions for howMany(), fillArray(), printArray(), dupeCheck(), and sortArray 
+*   12 March 2024 - fixed the dupeCheck() function, to actually check if there are duplicates
 ********************************************************/
 #include "useArray.h"
 #include <iostream>
@@ -87,15 +88,16 @@ bool dupeCheck(array<int,MAX_SIZE>& arr, int& size)
     for (int index = 0; index < size; index++)
     {
 
-        if (arr[index] == arr[index])
+        for (int check = index + 1; check < size; check++)
         {
-            return false;
-        }
-        else
-        {
-            return true;
+            if(arr[check] == arr[index])
+            {
+                return false;
+            }
+            
         }
     }
+    return true;
 }
 
 //this function will  arrange the elements of the array in ascending order
